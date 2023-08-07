@@ -14,8 +14,12 @@ public class Blade : MonoBehaviour
 
     private bool slicing;
 
+    private AudioSource audioSource;
+    public AudioClip sliceSound;
+
     private void Awake()
     {
+        audioSource = GameObject.FindGameObjectWithTag("Fruit").GetComponent<AudioSource>();
         mainCamera = Camera.main;
         sliceCollider = GetComponent<Collider>();
         sliceTrail = GetComponentInChildren<TrailRenderer>();
@@ -36,6 +40,7 @@ public class Blade : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             StartSlice();
+            audioSource.PlayOneShot(sliceSound);
         }
         else if (Input.GetMouseButtonUp(0))
         {

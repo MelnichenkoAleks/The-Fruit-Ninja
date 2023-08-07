@@ -15,6 +15,10 @@ PrefabInstance:
       propertyPath: points
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 1091535491223071645, guid: 76f7d2c12d7c6d843952683464e413f1, type: 3}
+      propertyPath: fruitSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 7b954db27b32ed34caa4971817f50e38, type: 3}
     - target: {fileID: 1303287166317018254, guid: 76f7d2c12d7c6d843952683464e413f1, type: 3}
       propertyPath: m_RootOrder
       value: 0

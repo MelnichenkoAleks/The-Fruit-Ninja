@@ -80,6 +80,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   whole: {fileID: 2222347283145372328}
   sliced: {fileID: 2222347281823734945}
+  fruitSound: {fileID: 8300000, guid: 7b954db27b32ed34caa4971817f50e38, type: 3}
   points: 1
 --- !u!1 &4377408723532753759
 GameObject:

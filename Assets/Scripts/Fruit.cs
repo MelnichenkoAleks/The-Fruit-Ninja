@@ -5,6 +5,9 @@ public class Fruit : MonoBehaviour
     public GameObject whole;
     public GameObject sliced;
 
+    private AudioSource audioSource;
+    public AudioClip fruitSound;
+
     private Rigidbody fruitRigidbody;
     private Collider fruitCollider;
     private ParticleSystem juiceEffect;
@@ -12,7 +15,8 @@ public class Fruit : MonoBehaviour
     public int points = 1;
 
     private void Awake()
-    {
+    {   
+        audioSource = GameObject.FindGameObjectWithTag("Fruit").GetComponent<AudioSource>();
         fruitRigidbody = GetComponent<Rigidbody>();
         fruitCollider = GetComponent<Collider>();
         juiceEffect = GetComponentInChildren<ParticleSystem>();
@@ -20,6 +24,7 @@ public class Fruit : MonoBehaviour
 
     private void Slice(Vector3 direction, Vector3 position, float force)
     {
+        audioSource.PlayOneShot(fruitSound);
         FindObjectOfType<GameManager>().IncreaseScore(points);
 
         // Disable the whole fruit

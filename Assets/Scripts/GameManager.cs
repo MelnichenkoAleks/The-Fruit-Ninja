@@ -6,6 +6,10 @@ public class GameManager : MonoBehaviour
 {
     public Text scoreText;
     public Image gameOverImage;
+    public GameObject gameOverPanel;
+
+    public AudioSource AudioSource;
+    public AudioClip gameOverSound;
 
     private Blade blade;
     private Spawner spawner;
@@ -84,22 +88,23 @@ public class GameManager : MonoBehaviour
             yield return null;
         }
 
-        yield return new WaitForSecondsRealtime(1f);
+        AudioSource.PlayOneShot(gameOverSound);
 
-        NewGame();
+        yield return new WaitForSecondsRealtime(0.5f);
 
-        elapsed = 0f;
+        gameOverPanel.SetActive(true);
 
-        // Fade back in
-        while (elapsed < duration)
-        {
-            float t = Mathf.Clamp01(elapsed / duration);
-            gameOverImage.color = Color.Lerp(Color.white, Color.clear, t);
+        /* NewGame();
 
-            elapsed += Time.unscaledDeltaTime;
+         elapsed = 0f;
 
-            yield return null;
-        }
+         /* while (elapsed < duration)
+         {
+             float t = Mathf.Clamp01(elapsed / duration);
+             gameOverImage.color = Color.Lerp(Color.white, Color.clear, t);
+
+             elapsed += Time.unscaledDeltaTime;
+
+             yield return null; */
     }
-
 }
