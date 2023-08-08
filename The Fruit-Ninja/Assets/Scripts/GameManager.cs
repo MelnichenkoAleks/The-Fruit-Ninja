@@ -41,8 +41,8 @@ public class GameManager : MonoBehaviour
     }
 
     private void ClearScene()
-    {
-        Fruit[] fruits = FindObjectsOfType<Fruit>();
+    {        
+        Fruit[] fruits = FindObjectsOfType<Fruit>();// Находим все объекты типа Fruit в сцене
 
         foreach (Fruit fruit in fruits)
         {
@@ -76,7 +76,7 @@ public class GameManager : MonoBehaviour
         float elapsed = 0f;
         float duration = 0.5f;
 
-        // Fade to white
+        // Плавное затемнение экрана до белого цвета
         while (elapsed < duration)
         {
             float t = Mathf.Clamp01(elapsed / duration);

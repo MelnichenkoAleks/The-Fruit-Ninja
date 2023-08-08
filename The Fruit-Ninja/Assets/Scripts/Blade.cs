@@ -1,13 +1,13 @@
 using UnityEngine;
 
 public class Blade : MonoBehaviour
-{
-    public Vector3 direction { get; private set; }
+{    
+    public Vector3 direction { get; private set; }// Направление движения клинка
 
     private Camera mainCamera;
 
     private Collider sliceCollider;
-    private TrailRenderer sliceTrail;
+    private TrailRenderer sliceTrail;// Визуальный след клинка
 
     public float sliceForce = 5f;
     public float minSliceVelocity = 0.01f;
@@ -77,9 +77,10 @@ public class Blade : MonoBehaviour
         newPosition.z = 0f;
 
         direction = newPosition - transform.position;
-
-        float velocity = direction.magnitude / Time.deltaTime;
-        sliceCollider.enabled = velocity > minSliceVelocity;
+        
+        float velocity = direction.magnitude / Time.deltaTime;// Вычисляем скорость как отношение расстояния к времени
+       
+        sliceCollider.enabled = velocity > minSliceVelocity;// Включаем или отключаем коллайдер в зависимости от скорости
 
         transform.position = newPosition;
     }
