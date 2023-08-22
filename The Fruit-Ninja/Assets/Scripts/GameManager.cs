@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
 
     public AudioSource AudioSource;
     public AudioClip gameOverSound;
+    public AudioClip hitSound;
 
     private Blade blade;
     private Spawner spawner;
@@ -41,8 +42,8 @@ public class GameManager : MonoBehaviour
     }
 
     private void ClearScene()
-    {        
-        Fruit[] fruits = FindObjectsOfType<Fruit>();// Находим все объекты типа Fruit в сцене
+    {
+        Fruit[] fruits = FindObjectsOfType<Fruit>();
 
         foreach (Fruit fruit in fruits)
         {
@@ -76,7 +77,7 @@ public class GameManager : MonoBehaviour
         float elapsed = 0f;
         float duration = 0.5f;
 
-        // Плавное затемнение экрана до белого цвета
+        // Fade to white
         while (elapsed < duration)
         {
             float t = Mathf.Clamp01(elapsed / duration);
@@ -106,5 +107,19 @@ public class GameManager : MonoBehaviour
              elapsed += Time.unscaledDeltaTime;
 
              yield return null; */
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.transform.tag == "Enemy")
+        {
+            AudioSource.PlayOneShot(hitSound);
+            HealthManager.health--;
+
+            if (HealthManager.health <= 0)
+            {
+                StartCoroutine(ExplodeSequence());
+            }
+        }
     }
 }

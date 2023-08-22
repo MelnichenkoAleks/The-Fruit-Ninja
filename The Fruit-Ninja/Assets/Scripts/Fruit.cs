@@ -10,8 +10,7 @@ public class Fruit : MonoBehaviour
 
     private Rigidbody fruitRigidbody;
     private Collider fruitCollider;
-  
-    private ParticleSystem juiceEffect;// Система частиц для сока
+    private ParticleSystem juiceEffect;
 
     public int points = 1;
 
@@ -28,19 +27,21 @@ public class Fruit : MonoBehaviour
         audioSource.PlayOneShot(fruitSound);
         FindObjectOfType<GameManager>().IncreaseScore(points);
 
+        // Disable the whole fruit
         fruitCollider.enabled = false;
         whole.SetActive(false);
 
+        // Enable the sliced fruit
         sliced.SetActive(true);
         juiceEffect.Play();
 
-        // Поворачиваем фрукт на основе угла разреза
+        // Rotate based on the slice angle
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         sliced.transform.rotation = Quaternion.Euler(0f, 0f, angle);
 
         Rigidbody[] slices = sliced.GetComponentsInChildren<Rigidbody>();
 
-        // Добавляем силу к каждому кусочку на основе направления разреза
+        // Add a force to each slice based on the blade direction
         foreach (Rigidbody slice in slices)
         {
             slice.velocity = fruitRigidbody.velocity;

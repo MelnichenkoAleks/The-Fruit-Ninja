@@ -7,6 +7,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -4232909459775784679, guid: 76f7d2c12d7c6d843952683464e413f1, type: 3}
+      propertyPath: fullHeart
+      value: 
+      objectReference: {fileID: 69918724, guid: 850ab28075cb4024fa3195f1634733f6, type: 3}
+    - target: {fileID: -4232909459775784679, guid: 76f7d2c12d7c6d843952683464e413f1, type: 3}
+      propertyPath: emptyHeart
+      value: 
+      objectReference: {fileID: -1382478320, guid: 850ab28075cb4024fa3195f1634733f6, type: 3}
+    - target: {fileID: -4232909459775784679, guid: 76f7d2c12d7c6d843952683464e413f1, type: 3}
+      propertyPath: hearts.Array.size
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 420982542892569469, guid: 76f7d2c12d7c6d843952683464e413f1, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -95,5 +107,6 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[1]
       value: 
       objectReference: {fileID: 2100000, guid: 17723e8f28ac6aa4690410f28dc986f1, type: 2}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -4232909459775784679, guid: 76f7d2c12d7c6d843952683464e413f1, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 76f7d2c12d7c6d843952683464e413f1, type: 3}

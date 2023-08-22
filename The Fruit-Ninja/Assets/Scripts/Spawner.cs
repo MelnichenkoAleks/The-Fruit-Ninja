@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Spawner : MonoBehaviour
 {
-    private Collider spawnArea;// Коллайдер области спавна
+    private Collider spawnArea;
 
     public GameObject[] fruitPrefabs;
     public GameObject bombPrefab;
@@ -49,7 +49,7 @@ public class Spawner : MonoBehaviour
             }
 
             Vector3 position = new Vector3();
-            position.x = Random.Range(spawnArea.bounds.min.x, spawnArea.bounds.max.x);// Генерируем случайную позицию по X внутри области спауна
+            position.x = Random.Range(spawnArea.bounds.min.x, spawnArea.bounds.max.x);
             position.y = Random.Range(spawnArea.bounds.min.y, spawnArea.bounds.max.y);
             position.z = Random.Range(spawnArea.bounds.min.z, spawnArea.bounds.max.z);
 
@@ -59,7 +59,7 @@ public class Spawner : MonoBehaviour
             Destroy(fruit, maxLifetime);
 
             float force = Random.Range(minForce, maxForce);
-            fruit.GetComponent<Rigidbody>().AddForce(fruit.transform.up * force, ForceMode.Impulse);// Добавляем силу объекту в направлении вперед
+            fruit.GetComponent<Rigidbody>().AddForce(fruit.transform.up * force, ForceMode.Impulse);
 
             yield return new WaitForSeconds(Random.Range(minSpawnDelay, maxSpawnDelay));
         }
